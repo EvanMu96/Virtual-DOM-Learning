@@ -14,6 +14,7 @@ var patch = vdl.patch;
 var tree = el('div,{id:'container'},[el('h1',['simple virtual dom'])]); 
 
 //generate a real dom from virtual dom
+
 var root = tree.render();
 
 //generate another different virtual dom tree
