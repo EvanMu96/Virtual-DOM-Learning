@@ -11,14 +11,14 @@
         var diff = vdl.diff;
         var patch = vdl.patch;
 
-        var icount = 2;
+        var icount = 0;
 
         function renderTree() {
             icount++;
             var items = [];
             var color = (icount % 2 === 0)? 'blue' : 'red';
 
-            for (var i = 0; i < 2; i++) {
+            for (var i = 0; i < icount; i++) {
                 items.push(el('li',['item #' + i]));
             }
 
@@ -40,7 +40,7 @@
             patch(root,patches);
 
             tree = newTree;
-        },5000);
+        },1500);
     </script>
 </body>
 </html>
