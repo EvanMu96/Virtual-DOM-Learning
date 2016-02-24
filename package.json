@@ -1,7 +1,7 @@
 {
   "name": "virtual_dom_learning",
   "version": "1.0.0",
-  "description": "",
+  "description": "a simple virtual dom algorithm",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

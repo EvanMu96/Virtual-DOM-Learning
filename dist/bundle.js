@@ -197,7 +197,7 @@
 	     if (newNode === null) {
 
 	     }else if (_.isString(oldNode) && _.isString(newNode)){
-	        if (newNode != oldNode) {
+	        if (newNode !== oldNode) {
 	             currentPatch.push({ type: patch.TEXT, content: newNode });
 	        }
 	       //当node不变时，检查props和children有没有区别
@@ -237,7 +237,7 @@
 	        currentNodeIndex = (leftNode && leftNode.count)
 	          ? currentNodeIndex + leftNode.count + 1
 	          : currentNodeIndex + 1
-	        dfsWalk(child, newChildren, currentNodeIndex,patches );
+	        dfsWalk(child, newChild, currentNodeIndex,patches );
 	        leftNode = child;
 	    });
 	 } 
@@ -262,7 +262,7 @@
 
 	     for(key in newProps){
 	        value = newProps[key];
-	        if (oldProps.hasOwnProperty(key)) {
+	        if (!oldProps.hasOwnProperty(key)) {
 	            count++;
 	            propsPatches[key] = newProps[key];
 	        }
@@ -330,6 +330,7 @@
 	                    //GTMDIE
 	                    node.nodeValue = currentPatch.content;
 	                }
+	                break;
 	            default:
 	                throw new Error('Unknow patch type ' + currentPatch.type);
 	        }
