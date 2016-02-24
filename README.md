@@ -16,7 +16,7 @@ var tree = el('div,{id:'container'},[el('h1',['simple virtual dom'])]);
 //generate a real dom from virtual dom
 var root = tree.render();
 
-3.generate another different virtual dom tree
+//generate another different virtual dom tree
 
 var newTree = el('div,{id:'container'},[el('h1',['New virtual dom'])]); 
 
