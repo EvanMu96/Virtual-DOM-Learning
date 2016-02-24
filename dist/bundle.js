@@ -224,9 +224,9 @@
 
 	function diffChildren(oldChildren, newChildren, index, patches, currentPatch) {
 	    var diffs = listDiff(oldChildren, newChildren, 'key');
-
+	    newChildren = diffs.children;
 	    if (diffs.moves.length) {
-	        var reorderPatch = {type: patch.REORDER, moves:diffs.moves };
+	        var reorderPatch = { type: patch.REORDER, moves:diffs.moves };
 	        currentPatch.push(reorderPatch);
 	    }
 
@@ -297,7 +297,7 @@
 	    var currentPatches = patches[walker.index];
 
 	    var len = node.childNodes ? node.childNodes.length : 0;
-	    for (var i = 0; i < 0; i++) {
+	    for (var i = 0; i < len; i++) {
 	        var child = node.childNodes[i];
 	        walker.index++;
 	        dfsWalk(child, walker, patches);
@@ -315,19 +315,19 @@
 	                var newNode = (typeof currentPatch.node === 'string')
 	                  ? document.createTextNode(currentPatch.node)
 	                  : currentPatch.node.render();
-	                    node.parentNode.replaceChild(newNode, node);
+	                node.parentNode.replaceChild(newNode, node);
 	                    break;
 	            case REORDER:
-	                reorderChildren(node, currentPatch);
+	                reorderChildren(node, currentPatch.moves);
 	                break;
 	            case PROPS:
-	                setProps(node, currentPatch.moves);
+	                setProps(node, currentPatch.props);
 	                break;
 	            case TEXT:
 	                if (node.textContent) {
 	                    node.textContent = currentPatch.content;
 	                }else{
-	                    //这个是对狗逼IE的支持，GTMD
+	                    //GTMDIE
 	                    node.nodeValue = currentPatch.content;
 	                }
 	            default:
