@@ -11,7 +11,7 @@ var patch = vdl.patch;
 
 //Use el(tagName, [properties], children) to create a virtual dom tree
 
-var tree = el('div,{id:'container'},[el('h1',['simple virtual dom'])]); 
+var tree = el('div',{id:'container'},[el('h1',['simple virtual dom'])]); 
 
 //generate a real dom from virtual dom
 
@@ -19,7 +19,7 @@ var root = tree.render();
 
 //generate another different virtual dom tree
 
-var newTree = el('div,{id:'container'},[el('h1',['New virtual dom'])]); 
+var newTree = el('div',{id:'container'},[el('h1',['New virtual dom'])]); 
 
 //diff two virtual dom
 var patches = diff(tree, newTree);
