@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>example1</title>
+</head>
+<body>
+    <script type="text/javascript" src="../dist/bundle.js"></script>
+    <script type="text/javascript">
+        var el = vdl.el;
+        var diff = vdl.diff;
+        var patch = vdl.patch;
+
+        var icount = 2;
+
+        function renderTree() {
+            icount++;
+            var items = [];
+            var color = (icount % 2 === 0)? 'blue' : 'red';
+
+            for (var i = 0; i < 2; i++) {
+                items.push(el('li',['item #' + i]));
+            }
+
+            return el('div',{'id': 'container'},[
+                el('h1',{style: 'color: '+ color},['virtual-dom-learnig']),
+                el('p',['the count is : '+ icount]),
+                el('ul',items)
+            ]);
+        }
+
+        var tree = renderTree();
+        var root = tree.render();
+        document.body.appendChild(root);
+
+        setInterval(function () {
+            var newTree = renderTree();
+            var patches = diff(tree, newTree);
+            console.log(patches);
+            patch(root,patches);
+
+            tree = newTree;
+        },5000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+window.vdl = require('./index');
