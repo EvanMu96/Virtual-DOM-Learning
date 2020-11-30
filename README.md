@@ -28,7 +28,7 @@ var patches = diff(tree, newTree);
 
 patch(root, patches);
 ```
-##例子
-`/example/`
+## 例子
+in `/example/`
 
     
